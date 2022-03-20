@@ -18,6 +18,20 @@
 
 使用 Maven / Gradle 只需添加私有仓库与依赖项即可。
 
+**使用 Gradle 配置 gradle.build**
+
+```groovy
+repositories {
+	maven { url "https://repository.yallage.com/snapshots" }
+}
+```
+
+```groovy
+dependencies {
+	implementation "com.yallage:mango-core:1.0.0-dev"
+}
+```
+
 
 
 ## 插件配置文件填写
