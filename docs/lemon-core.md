@@ -2,13 +2,13 @@
 
 ## Lemon Core
 
-通过 Lemon Core 可以使用 websocket 信道进行双向交流，不受 Bungee 等代理需要通过媒介插件 / 实体进行通信，更安全、稳定和自由。
+通过 Lemon Core 可以使用 WebSocket 信道进行双向交流，不受 Bungee 等代理需要通过媒介插件 / 实体进行通信，更安全、稳定和自由。
 
 
 
-## Websocket
+## WebSocket
 
-WebSocket是一种在单个TCP连接上进行全双工通信的协议，它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，正是如此，允许开发者使用 Lemon Core 从客户端主动推送消息。
+WebSocket 是一种在单个TCP连接上进行全双工通信的协议，它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，正是如此，允许开发者使用 Lemon Core 从客户端主动推送消息。
 
 
 
@@ -66,7 +66,7 @@ dependencies {
 
 
 
-## 获取 LemonClient 客户端
+## 获取 Lemon Client 客户端
 
 ```java
 LemonClient client = new LemonClient("随机数字符串 作为本插件的唯一识别码");
@@ -90,13 +90,13 @@ client.send("消息内容");
 
 首先需要创建一个 Bukkit / Bungee 的事件监听器
 
-然后监听 LemonBukkitMessageEvent 或是 LemonBungeeMessageEvent
+然后监听 `LemonBukkitMessageEvent` 或是 `LemonBungeeMessageEvent`
 
 在事件中可以获取到 `clientId` `pluginId` `message`  
 
 需要注意的是：本插件发出的消息也会被本插件的事件监听器获取到，除非想要让本服务端处理该消息，否则则需要通过 `clientId` 辨别。
 
-获取 `clientId` 方法如下：
+Lemon Client 实例中获取 `clientId` 方法如下：
 
 ```java
 client.getClientId();
