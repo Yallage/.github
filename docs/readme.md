@@ -12,4 +12,4 @@
 
 [Mango Core 芒果核心](mango-core.md) - MongoDB 封装数据库 更现代的统一存储方式
 
-[Lemon Core 柠檬核心](lemon-core.md) - 不使用 Bungee 的跨服通信方案 基于 Websocket
+[Lemon Core 柠檬核心](lemon-core.md) - 用于跨服的双向通信消息管道 基于 WebSocket
