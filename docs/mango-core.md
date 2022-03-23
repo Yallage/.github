@@ -168,7 +168,7 @@ public class PlayerData {
 
 现在使用上一步创建的 MangoClient 实例：
 
-创建一条 PlayerData 数据库记录
+**创建一条 PlayerData 数据库记录**
 
 ```java
 PlayerData data = new PlayerData("mango", 114514)
@@ -177,7 +177,7 @@ client.create("数据库名", "数据集合名 相当于 MySQL 的表名",data)
 
 
 
-根据玩家名字读取这一条数据
+**根据玩家名字读取这一条数据**
 
 ```java
 // 将所有字段 name 为 mango 的结果读取出来
@@ -193,7 +193,7 @@ PlayerData data = client.readOne("数据库名", "数据集合名 相当于 MySQ
 
 
 
-删除数据
+**删除数据**
 
 ```java
 // 将所有字段 name 为 mango 的数据删除
@@ -207,7 +207,7 @@ client.deleteOne("数据库名", "数据集合名 相当于 MySQL 的表名", in
 
 
 
-更新数据
+**更新数据**
 
 ```java
 Map<String, Object> index = new HashMap<>(){ put("name", "mango"); };
@@ -217,3 +217,51 @@ client.update("数据库名", "数据集合名 相当于 MySQL 的表名", index
 
 
 以上就是使用 Mango Core 进行增加、删除、查询和更改操作的步骤，另有扩展方法可以参考 [MangoClient](https://github.com/Yallage/mango-core/blob/main/src/main/java/com/yallage/mango/core/interfaces/MangoClient.java)
+
+
+
+## 异步读取数据库
+
+当大量读取数据时，为避免卡服，应该创建异步任务。
+
+**首先需要一个创建异步客户端**
+
+根据 Bukkit 或是 Bungee 选择对应客户端
+
+```java
+Gson gson = new Gson();
+MangoClient client = new MangoBukkitAsyncClient(gson);
+```
+
+或是
+
+```java
+Gson gson = new Gson();
+MangoClient client = new MangoBungeeAsyncClient(gson);
+```
+
+
+
+**执行结果监听器**
+
+需要监听 `MangoBukkitAsyncEvent` 或是 `MangoBungeeAsyncEvent` 事件。
+
+
+
+**异步读取**
+
+```java
+Map<String, Object> index = new HashMap<>(){ put("name", "mango"); };
+String id = client.read("数据库名", "数据集合名 相当于 MySQL 的表名", index);
+```
+
+与上一步的阻塞型读取不一样的是，这次的读取只返回了一个取件码，通过取件码即可从监听器中取出本次异步读取的结果了，需要通过取件码自行判断是否为对应的异步结果。
+
+对应的方法是 `String getAsyncId()` 与 `<T> List<T> getData(Class<T> type)` ，getData() 要求一个类型数据，然后才能返回这一个类型数据的数据列表。
+
+如下：
+
+```java
+List<PlayerData> datas = event.getData(PlayerData.class);
+```
+

@@ -11,3 +11,5 @@
 选择以下文档进行阅读
 
 [Mango Core 芒果核心](mango-core.md) - MongoDB 封装数据库 更现代的统一存储方式
+
+[Lemon Core 柠檬核心](lemon-core.md) - 不使用 Bungee 的跨服通信方案 基于 Websocket

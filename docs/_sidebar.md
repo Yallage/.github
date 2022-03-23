@@ -1,2 +1,3 @@
 - [Yallage | 犽之谷](readme.md)
 - [Mango Core | 芒果核心](mango-core.md)
+- [Lemon Core | 柠檬核心](lemon-core.md)
