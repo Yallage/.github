@@ -26,7 +26,7 @@ repositories {
 
 ```groovy
 dependencies {
-	implementation "com.yallage:lemon-core:1.0.1-dev"
+	implementation "com.yallage.lemon:lemon-core:1.0.0-dev"
 }
 ```
 

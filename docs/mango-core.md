@@ -28,7 +28,7 @@ repositories {
 
 ```groovy
 dependencies {
-	implementation "com.yallage:mango-core:1.0.0-dev"
+	implementation "com.yallage.mango:mango-core:1.0.0-dev"
 }
 ```
 
